@@ -1,0 +1,305 @@
+/* ==========================================================
+   Triform Docs — MKDocs Material (slate) theme overrides
+   Ported from the old Docusaurus/Infima look & feel
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   Fonts (local)  — use RELATIVE paths from extra.css
+   If extra.css is at docs/stylesheets/extra.css and fonts at docs/assets/fonts/
+   use ../assets/fonts/...
+   ---------------------------------------------------------- */
+@font-face {
+  font-family: "Clash Display";
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("../assets/fonts/ClashDisplay-Variable.woff2") format("woff2"),
+       url("../assets/fonts/ClashDisplay-Variable.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../assets/fonts/Figtree-Variable.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../assets/fonts/Figtree-Italic-Variable.ttf") format("truetype");
+}
+
+/* ----------------------------------------------------------
+   Global font variables (must be on :root)
+   ---------------------------------------------------------- */
+:root {
+  --md-text-font: "Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+                  Roboto, "Helvetica Neue", Arial, "Apple Color Emoji",
+                  "Segoe UI Emoji", "Segoe UI Symbol";
+  --md-code-font: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+                  "Courier New", ui-monospace, monospace;
+
+  /* Title font (choose what you want in the header) */
+  --title-font: "Clash Display", "Figtree", ui-sans-serif, system-ui, -apple-system,
+                "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Body + code fonts via Material's vars */
+.md-typeset         { font-family: var(--md-text-font); }
+.md-typeset code    { font-family: var(--md-code-font); }
+
+/* ----------------------------------------------------------
+   Header title
+   - Site name (first topic) = --title-font
+   - Page title (second topic) keeps text font (optional)
+   ---------------------------------------------------------- */
+
+/* Site name (left) */
+.md-header__title .md-header__topic:first-child .md-ellipsis {
+  font-family: var(--title-font) !important;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* (Optional) Page title (right of ›) — keep text font, tune weight if you like */
+.md-header__title .md-header__topic + .md-header__topic .md-ellipsis {
+  font-family: var(--md-text-font) !important;
+  font-weight: 600;
+}
+
+/* If you want BOTH to use the same display font, just use this instead:
+.md-header__title .md-ellipsis {
+  font-family: var(--title-font) !important;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+*/
+  
+  /* ----------------------------------------------------------
+     Dark palette mapping (slate)
+     ---------------------------------------------------------- */
+  [data-md-color-scheme="slate"] {
+    /* Base surfaces & text */
+    --md-default-bg-color: #1b1b1d;
+    --md-default-fg-color: #e3e3e3;
+    --md-default-fg-color--light: #dadde1;
+    --md-default-fg-color--lighter: #8d949e;
+  
+    /* Primary accent */
+    --md-primary-fg-color: #7d87ff;
+    --md-primary-fg-color--light: #a4b4ff;
+    --md-primary-fg-color--dark: #432dd7;
+  
+    /* Links */
+    --md-typeset-a-color: #7d87ff;
+    --md-accent-fg-color: #7d87ff;
+  
+    /* Major surfaces */
+    --md-primary-bg-color: #1b1b1d; /* header */
+    --md-footer-bg-color: #242526;
+    --md-footer-fg-color: #cfd3da;
+  
+    /* Code */
+    --md-code-bg-color: #2a2c34;
+    --md-code-fg-color: #e7ebf2;
+  
+    /* Custom borders */
+    --trf-border-color: #444950;
+    --trf-border-color-soft: #2f3238;
+  }
+  
+  /* Unify surfaces */
+  .md-header,
+  .md-tabs,
+  .md-sidebar--primary,
+  .md-sidebar--secondary,
+  .md-main,
+  .md-content,
+  .md-footer {
+    background-color: var(--md-default-bg-color) !important;
+  }
+  
+  /* Container width similar to old site */
+  .md-grid { max-width: 1140px; }
+  
+  /* ----------------------------------------------------------
+     Typography
+     ---------------------------------------------------------- */
+  .md-typeset h1 { font-weight: 400; font-size: 2.75rem; }
+  .md-typeset h2 { font-weight: 500; font-size: 1.85rem; }
+  .md-typeset h3 { font-weight: 500; font-size: 1.45rem; }
+  .md-typeset h4 { font-weight: 500; font-size: 1.15rem; }
+  .md-typeset h5 { font-weight: 500; font-size: 1.00rem; }
+  .md-typeset h6 { font-weight: 500; font-size: 0.95rem; }
+  
+  .md-typeset p,
+  .md-typeset li {
+    max-width: 75ch;
+    opacity: 0.92; /* subtle, but not washed out */
+  }
+  
+  /* Links */
+  .md-typeset a {
+    color: var(--md-typeset-a-color);
+    text-decoration: none;
+  }
+  .md-typeset a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Horizontal rule */
+  .md-typeset hr {
+    border: 0;
+    border-top: 1px solid var(--trf-border-color);
+    opacity: .5;
+    margin: 1.5rem 0;
+  }
+  
+  /* ----------------------------------------------------------
+     Code & pre
+     ---------------------------------------------------------- */
+  .md-typeset code {
+    background-color: #262a31;
+    color: var(--md-code-fg-color);
+    border: 1px solid var(--trf-border-color);
+    border-radius: .3rem;
+    padding: .08rem .32rem;
+    font-family: var(--md-code-font);
+  }
+  .md-typeset pre {
+    background: var(--md-code-bg-color);
+    border: 1px solid var(--trf-border-color);
+    border-radius: 10px;
+  }
+  .md-typeset pre > code {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+  .md-clipboard {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--trf-border-color);
+  }
+  .md-clipboard:hover { background: rgba(255,255,255,0.10); }
+  
+  /* ----------------------------------------------------------
+     Tables
+     ---------------------------------------------------------- */
+  .md-typeset table:not([class]) {
+    border: 1px solid var(--trf-border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #202227;
+  }
+  .md-typeset table:not([class]) th,
+  .md-typeset table:not([class]) td {
+    border-color: var(--trf-border-color);
+  }
+  .md-typeset table:not([class]) tr:nth-child(2n) {
+    background: #252831;
+  }
+  
+  /* ----------------------------------------------------------
+     Blockquotes & admonitions
+     ---------------------------------------------------------- */
+  .md-typeset blockquote {
+    border-left: 3px solid var(--trf-border-color);
+    background: #22242a;
+    padding: .75rem 1rem;
+    color: var(--md-default-fg-color);
+  }
+  
+  .md-typeset .admonition,
+  .md-typeset details {
+    background: #22242a;
+    border: 1px solid var(--trf-border-color);
+    border-left-width: 5px;
+    border-radius: 10px;
+  }
+  .md-typeset .admonition.note     { border-left-color: var(--md-primary-fg-color); }
+  .md-typeset .admonition.tip      { border-left-color: #00a400; } /* success */
+  .md-typeset .admonition.warning  { border-left-color: #ffba00; }
+  .md-typeset .admonition.danger   { border-left-color: #fa383e; }
+  
+  /* ----------------------------------------------------------
+     Navigation (sidebars, header, tabs)
+     ---------------------------------------------------------- */
+  /* Sidebar text & links */
+  [data-md-color-scheme="slate"] .md-nav__title,
+  [data-md-color-scheme="slate"] .md-nav__link {
+    color: #e7ebf2 !important;
+  }
+  .md-nav { font-size: .95rem; }
+  .md-nav__link:hover {
+    background-color: rgba(255,255,255,0.06);
+  }
+  .md-nav__link--active,
+  .md-nav__item--active > .md-nav__link {
+    color: #ffffff !important;
+    font-weight: 600;
+    background-color: rgba(125,135,255,0.10);
+  }
+  
+  /* Header icons & breadcrumbs */
+  [data-md-color-scheme="slate"] .md-header__button,
+  [data-md-color-scheme="slate"] .md-search__icon,
+  [data-md-color-scheme="slate"] .md-icon {
+    color: #e7ebf2 !important;
+  }
+  [data-md-color-scheme="slate"] .md-header__title {
+    color: #e7ebf2 !important;
+    opacity: .95;
+  }
+  
+  /* Tabs (if enabled) */
+  [data-md-color-scheme="slate"] .md-tabs,
+  [data-md-color-scheme="slate"] .md-tabs__link {
+    background: #0f1115 !important;
+    color: #e7ebf2 !important;
+  }
+  [data-md-color-scheme="slate"] .md-tabs__link--active,
+  [data-md-color-scheme="slate"] .md-tabs__link:hover {
+    color: #ffffff !important;
+    box-shadow: inset 0 -2px 0 0 #7d87ff;
+  }
+  
+  /* ----------------------------------------------------------
+     Search
+     ---------------------------------------------------------- */
+  .md-search__form {
+    background-color: #23252b;
+    border: 1px solid var(--trf-border-color);
+  }
+  .md-search__form:focus-within { box-shadow: 0 0 0 2px #333a49 inset; }
+  .md-search__input { color: var(--md-default-fg-color); }
+  .md-search-result__meta,
+  .md-search-result__teaser { color: var(--md-default-fg-color--lighter); }
+  
+  /* ----------------------------------------------------------
+     Footer
+     ---------------------------------------------------------- */
+  .md-footer { border-top: 1px solid var(--trf-border-color); }
+  
+  /* ----------------------------------------------------------
+     Buttons
+     ---------------------------------------------------------- */
+  .md-typeset .md-button {
+    background: #23252b;
+    color: var(--md-default-fg-color);
+    border: 1px solid var(--trf-border-color);
+    border-radius: 10px;
+  }
+  .md-typeset .md-button:hover { background: #2a2d35; }
+  
+  /* ----------------------------------------------------------
+     Utilities
+     ---------------------------------------------------------- */
+  .md-top { right: 22px; bottom: 24px; }               /* back-to-top */
+  *:focus-visible { outline: 2px solid #3b4260; outline-offset: 2px; }
+  
+  /* Mobile drawer surface */
+  @media (max-width: 960px) {
+    .md-nav { background: var(--md-default-bg-color); }
+  }
+  

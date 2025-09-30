@@ -1,0 +1,140 @@
+site_name: DoX
+site_url: https://docs.triform.ai
+repo_url: https://github.com/triform-ai/mkdocs
+edit_uri: edit/main/docs/
+
+# Fail fast on issues in CI/local builds
+strict: false
+
+theme:
+  name: material
+  palette:
+    - scheme: slate   # dark only
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top          # back-to-top button
+    - navigation.footer
+    - toc.integrate
+    - toc.follow              # sticky ToC on desktop
+    - content.code.copy
+    - content.action.edit     # "Edit this page"
+    - content.action.view     # "View source"
+    - search.suggest
+    - search.highlight
+    - search.share            # shareable search URLs
+  logo: assets/logo.svg
+  favicon: assets/favicon.png
+
+extra_css:
+  - assets/extra.css
+
+nav:
+  - Welcome: index.md
+
+  - Getting Started:
+      - Login & Registration: getting-started/login.md
+      - First Launch & Layout Overview: getting-started/workspace-overview.md
+
+  - Workspace:
+      - Top Bar: workspace/top-bar.md
+      - Canvas:
+          - Overview: workspace/canvas/overview.md
+          - Project View: workspace/canvas/project-view.md
+          - Agent Toolbox View: workspace/canvas/agent-toolbox.md
+          - Flow View:
+              - Basics: workspace/canvas/flow-view/basics.md
+              - Input & Output Nodes: workspace/canvas/flow-view/io-nodes.md
+              - Creating & Connecting Components: workspace/canvas/flow-view/create-connect.md
+              - Node Interactions: workspace/canvas/flow-view/node-interactions.md
+      - Chat Panel (Triton): workspace/chat-panel.md
+      - Properties Panel:
+          - Overview: workspace/properties/overview.md
+          - Global Variables: workspace/properties/global-variables.md
+          - Components:
+              - Definition & Information: workspace/properties/components/definition.md
+              - Content:
+                  - Agents: workspace/properties/components/content/agents.md
+                  - Flows: workspace/properties/components/content/flows.md
+                  - Actions: workspace/properties/components/content/actions.md
+                  - Projects: workspace/properties/components/content/projects.md
+          - Execute: workspace/properties/execute.md
+          - Input & Output: workspace/properties/input-output.md
+
+  - Core Concepts:
+      - Nodes: concepts/nodes.md
+      - Projects: concepts/projects.md
+      - Agents: concepts/agents.md
+      - Actions: concepts/actions.md
+      - Flows: concepts/flows.md
+      - Library:
+          - Overview: concepts/library/overview.md
+          - Triggers: concepts/library/triggers.md
+          - Modules: concepts/library/modules.md
+          - Variables: concepts/library/variables.md
+
+  - Executions & Testing:
+      - Executions: executions/executions.md
+      - Payloads: executions/payloads.md
+      - Evaluations: executions/evaluations.md
+
+  - Project Administration:
+      - Projects List View: project-admin/projects-list.md
+      - Deployments: project-admin/deployments.md
+      - Expose Components (API & Schedule): project-admin/expose.md
+      - API Keys: project-admin/api-keys.md
+
+  - Organizations & Accounts:
+      - Organizations:
+          - Overview: orgs/overview.md
+          - Affiliations: orgs/affiliations.md
+          - Roles & Permissions: orgs/roles-permissions.md
+          - Members & Invitations: orgs/members.md
+          - GitHub Integration: orgs/github-integration.md
+          - Billing & Settings: orgs/billing-settings.md
+      - Users:
+          - Profile: users/profile.md
+          - Authentication & Sessions: users/authentication-sessions.md
+      - Organization Admin: orgs/admin.md
+      - Account Admin (Coming Soon): accounts/admin.md
+
+  - Quotas:
+      - Overview: quotas/index.md
+      - Execution-Based: quotas/execution-based.md
+      - Resource-Based: quotas/resource-based.md
+      - API & Integrations: quotas/api-integrations.md
+      - Account-Specific: quotas/account-specific.md
+
+  - Roadmap:
+      - Monitoring (In Progress): roadmap/monitoring.md
+      - Alerts (Backlog): roadmap/alerts.md
+      - Persistent Storage (Upcoming): roadmap/persistent-storage.md
+      - Community Library (Upcoming): roadmap/community-library.md
+
+  - Community:
+      - Join the Conversation: community/join-discord.md
+
+  - Appendix:
+      - Quick Reference: appendix/quick-reference.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/triform-ai
+    # - icon: fontawesome/brands/discord
+    #   link: https://discord.gg/xxxxxx
+  version:
+    provider: mike
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.tabbed
+  - pymdownx.superfences
+  - pymdownx.inlinehilite     # `code` with highlights inside paragraphs
+  - pymdownx.emoji            # :sparkles: etc.
+
+plugins:
+  - search
